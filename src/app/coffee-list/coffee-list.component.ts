@@ -9,12 +9,14 @@ import { Coffee } from '../models/coffee';
 export class CoffeeListComponent implements OnInit {
   coffeeList: Coffee[] = [
     {
+      id: 1,
       name: 'Mokka-Java Blend',
       company: 'Happy Mug',
       descriptors: ['Mild Fruit', 'Sweet'],
       roast: 'Medium roast',
     },
     {
+      id: 2,
       name: 'Steadfast Java Island',
       company: 'Happy Mug',
       descriptors: ['Dark Chocolate', 'Hazelnut', 'Creamy'],

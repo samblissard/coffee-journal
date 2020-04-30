@@ -1,7 +1,9 @@
 <mat-card class="card">
   <mat-card-title class="card-title">
     <div>{{ coffee.name }}</div>
-    <mat-icon>arrow_forward</mat-icon>
+    <button mat-icon-button [routerLink]="'/coffee/' + coffee.id">
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
   </mat-card-title>
   <mat-card-subtitle>{{ coffee.company }}</mat-card-subtitle>
   <mat-card-actions>

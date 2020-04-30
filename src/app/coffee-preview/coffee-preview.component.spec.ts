@@ -15,7 +15,13 @@ describe('CoffeePreviewComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CoffeePreviewComponent);
     component = fixture.componentInstance;
-    component.coffee = { name: '', company: '', descriptors: [], roast: '' };
+    component.coffee = {
+      id: 1,
+      name: '',
+      company: '',
+      descriptors: [],
+      roast: '',
+    };
     fixture.detectChanges();
   });
 
