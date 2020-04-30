@@ -14,6 +14,7 @@ import { HeaderComponent } from './header/header.component';
 import { CoffeeListComponent } from './coffee-list/coffee-list.component';
 import { JournalEntryListComponent } from './journal-entry-list/journal-entry-list.component';
 import { JournalEntryFormComponent } from './journal-entry-form/journal-entry-form.component';
+import { CoffeeDetailedComponent } from './coffee-detailed/coffee-detailed.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { JournalEntryFormComponent } from './journal-entry-form/journal-entry-fo
     CoffeeListComponent,
     JournalEntryListComponent,
     JournalEntryFormComponent,
+    CoffeeDetailedComponent,
   ],
   imports: [
     BrowserModule,
