@@ -1,20 +1,6 @@
 <div class="coffee-list">
-  <app-coffee-preview></app-coffee-preview>
-  <app-coffee-preview></app-coffee-preview>
-  <app-coffee-preview></app-coffee-preview>
-  <app-coffee-preview></app-coffee-preview>
-  <app-coffee-preview></app-coffee-preview>
-  <app-coffee-preview></app-coffee-preview>
-  <app-coffee-preview></app-coffee-preview>
-  <app-coffee-preview></app-coffee-preview>
-  <app-coffee-preview></app-coffee-preview>
-  <app-coffee-preview></app-coffee-preview>
-  <app-coffee-preview></app-coffee-preview>
-  <app-coffee-preview></app-coffee-preview>
-  <app-coffee-preview></app-coffee-preview>
-  <app-coffee-preview></app-coffee-preview>
-  <app-coffee-preview></app-coffee-preview>
-  <app-coffee-preview></app-coffee-preview>
-  <app-coffee-preview></app-coffee-preview>
-  <app-coffee-preview></app-coffee-preview>
+  <app-coffee-preview
+    *ngFor="let coffee of coffeeList"
+    [coffee]="coffee"
+  ></app-coffee-preview>
 </div>
