@@ -7,9 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatRippleModule } from '@angular/material/core';
 import { HeaderComponent } from './header/header.component';
+import { CoffeeListComponent } from './coffee-list/coffee-list.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [AppComponent, HeaderComponent, CoffeeListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
