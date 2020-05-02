@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Coffee } from '../models/coffee';
+import { CoffeeService } from '../services/coffee.service';
 
 @Component({
   selector: 'app-coffee-list',
@@ -7,24 +8,13 @@ import { Coffee } from '../models/coffee';
   styleUrls: ['./coffee-list.component.css'],
 })
 export class CoffeeListComponent implements OnInit {
-  coffeeList: Coffee[] = [
-    {
-      id: 1,
-      name: 'Mokka-Java Blend',
-      company: 'Happy Mug',
-      descriptors: ['Mild Fruit', 'Sweet'],
-      roast: 'Medium roast',
-    },
-    {
-      id: 2,
-      name: 'Steadfast Java Island',
-      company: 'Happy Mug',
-      descriptors: ['Dark Chocolate', 'Hazelnut', 'Creamy'],
-      roast: 'Dark roast',
-    },
-  ];
+  coffeeList: Coffee[];
 
-  constructor() {}
+  constructor(private coffeeService: CoffeeService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.coffeeService.getAll().subscribe((coffeeList) => {
+      this.coffeeList = coffeeList;
+    });
+  }
 }

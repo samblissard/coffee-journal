@@ -1,7 +1,7 @@
 export interface Coffee {
   id: number;
   name: string;
-  company: string;
-  descriptors: string[];
+  roaster: string;
+  tastingNotes: string[];
   roast: string;
 }

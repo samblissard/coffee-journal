@@ -18,8 +18,8 @@ describe('CoffeePreviewComponent', () => {
     component.coffee = {
       id: 1,
       name: '',
-      company: '',
-      descriptors: [],
+      roaster: '',
+      tastingNotes: [],
       roast: '',
     };
     fixture.detectChanges();
