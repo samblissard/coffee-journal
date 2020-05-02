@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { JournalEntryListComponent } from './journal-entry-list/journal-entry-li
 import { JournalEntryFormComponent } from './journal-entry-form/journal-entry-form.component';
 import { CoffeeDetailedComponent } from './coffee-detailed/coffee-detailed.component';
 import { CoffeePreviewComponent } from './coffee-preview/coffee-preview.component';
+import { CoffeeService } from './services/coffee.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { CoffeePreviewComponent } from './coffee-preview/coffee-preview.componen
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -42,7 +45,7 @@ import { CoffeePreviewComponent } from './coffee-preview/coffee-preview.componen
     MatChipsModule,
     MatGridListModule,
   ],
-  providers: [],
+  providers: [CoffeeService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
