@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,12 +10,17 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatRippleModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { HeaderComponent } from './header/header.component';
 import { CoffeeListComponent } from './coffee-list/coffee-list.component';
 import { JournalEntryListComponent } from './journal-entry-list/journal-entry-list.component';
 import { JournalEntryFormComponent } from './journal-entry-form/journal-entry-form.component';
 import { CoffeeDetailedComponent } from './coffee-detailed/coffee-detailed.component';
+import { CoffeePreviewComponent } from './coffee-preview/coffee-preview.component';
+import { CoffeeService } from './services/coffee.service';
 
 @NgModule({
   declarations: [
@@ -24,17 +30,22 @@ import { CoffeeDetailedComponent } from './coffee-detailed/coffee-detailed.compo
     JournalEntryListComponent,
     JournalEntryFormComponent,
     CoffeeDetailedComponent,
+    CoffeePreviewComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatRippleModule,
     MatButtonModule,
     MatIconModule,
+    MatCardModule,
+    MatChipsModule,
+    MatGridListModule,
   ],
-  providers: [],
+  providers: [CoffeeService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

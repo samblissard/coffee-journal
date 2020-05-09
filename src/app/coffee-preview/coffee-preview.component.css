@@ -1,0 +1,14 @@
+.card {
+  margin: 1em;
+}
+
+.card-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.roast-chip {
+  background-color: #c47424;
+}
