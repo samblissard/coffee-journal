@@ -1,6 +1,6 @@
 .coffee-list {
   flex: 1;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
