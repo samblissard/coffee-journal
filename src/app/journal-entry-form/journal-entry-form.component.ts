@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-journal-entry-form',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./journal-entry-form.component.css'],
 })
 export class JournalEntryFormComponent implements OnInit {
+  tastingNote: FormControl = new FormControl('');
   tastingNoteList: String[];
 
   constructor() {
@@ -14,7 +16,8 @@ export class JournalEntryFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  addTastingNote(tastingNote: String): void {
-    this.tastingNoteList.push(tastingNote);
+  addTastingNote(): void {
+    this.tastingNoteList.push(this.tastingNote.value);
+    this.tastingNote.reset();
   }
 }

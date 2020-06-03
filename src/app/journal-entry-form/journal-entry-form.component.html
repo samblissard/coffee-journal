@@ -29,9 +29,13 @@
     <div>
       <mat-form-field>
         <mat-label>Tasting Notes</mat-label>
-        <input matInput #tastingNote />
+        <input matInput [formControl]="tastingNote" />
       </mat-form-field>
-      <button mat-icon-button (click)="addTastingNote(tastingNote.value)">
+      <button
+        mat-icon-button
+        (click)="addTastingNote()"
+        [disabled]="!tastingNote.value"
+      >
         <mat-icon>add</mat-icon>
       </button>
     </div>
