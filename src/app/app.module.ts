@@ -13,6 +13,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { HeaderComponent } from './header/header.component';
 import { CoffeeListComponent } from './coffee-list/coffee-list.component';
@@ -44,6 +49,11 @@ import { CoffeeService } from './services/coffee.service';
     MatCardModule,
     MatChipsModule,
     MatGridListModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSliderModule,
+    MatRadioModule,
   ],
   providers: [CoffeeService],
   bootstrap: [AppComponent],

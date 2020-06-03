@@ -1,1 +1,44 @@
-<p>journal-entry-form works!</p>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Coffee
+    </mat-panel-title>
+    <mat-panel-description>
+      What are you tasting?
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <div class="formFieldsContainer">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Roaster</mat-label>
+      <input matInput />
+    </mat-form-field>
+
+    <label for="roastRadios">Roast</label>
+    <mat-radio-group id="roastRadios">
+      <mat-radio-button value="light">Light</mat-radio-button>
+      <mat-radio-button value="medium">Medium</mat-radio-button>
+      <mat-radio-button value="dark">Dark</mat-radio-button>
+    </mat-radio-group>
+
+    <div>
+      <mat-form-field>
+        <mat-label>Tasting Notes</mat-label>
+        <input matInput #tastingNote />
+      </mat-form-field>
+      <button mat-icon-button (click)="addTastingNote(tastingNote.value)">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <mat-chip-list>
+      <mat-chip *ngFor="let tastingNote of tastingNoteList">
+        {{ tastingNote }}
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+</mat-expansion-panel>
