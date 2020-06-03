@@ -9,24 +9,26 @@
   </mat-expansion-panel-header>
 
   <div class="formFieldsContainer">
-    <mat-form-field>
+    <mat-form-field class="formField">
       <mat-label>Name</mat-label>
       <input matInput />
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field class="formField">
       <mat-label>Roaster</mat-label>
       <input matInput />
     </mat-form-field>
 
-    <label for="roastRadios">Roast</label>
-    <mat-radio-group id="roastRadios">
-      <mat-radio-button value="light">Light</mat-radio-button>
-      <mat-radio-button value="medium">Medium</mat-radio-button>
-      <mat-radio-button value="dark">Dark</mat-radio-button>
-    </mat-radio-group>
+    <div class="formField">
+      <label class="roastRadioButtonLabel">Roast</label>
+      <mat-radio-group>
+        <mat-radio-button value="light">Light</mat-radio-button>
+        <mat-radio-button value="medium">Medium</mat-radio-button>
+        <mat-radio-button value="dark">Dark</mat-radio-button>
+      </mat-radio-group>
+    </div>
 
-    <div>
+    <div class="formField">
       <mat-form-field>
         <mat-label>Tasting Notes</mat-label>
         <input matInput [formControl]="tastingNote" />
@@ -38,11 +40,11 @@
       >
         <mat-icon>add</mat-icon>
       </button>
+      <mat-chip-list>
+        <mat-chip *ngFor="let tastingNote of tastingNoteList">
+          {{ tastingNote }}
+        </mat-chip>
+      </mat-chip-list>
     </div>
-    <mat-chip-list>
-      <mat-chip *ngFor="let tastingNote of tastingNoteList">
-        {{ tastingNote }}
-      </mat-chip>
-    </mat-chip-list>
   </div>
 </mat-expansion-panel>
