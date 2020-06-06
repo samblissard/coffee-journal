@@ -41,8 +41,12 @@
         <mat-icon>add</mat-icon>
       </button>
       <mat-chip-list>
-        <mat-chip *ngFor="let tastingNote of tastingNoteList">
+        <mat-chip
+          *ngFor="let tastingNote of tastingNoteList; index as i"
+          (removed)="removeTastingNote(i)"
+        >
           {{ tastingNote }}
+          <mat-icon matChipRemove>cancel</mat-icon>
         </mat-chip>
       </mat-chip-list>
     </div>

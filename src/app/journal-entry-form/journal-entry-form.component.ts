@@ -20,4 +20,8 @@ export class JournalEntryFormComponent implements OnInit {
     this.tastingNoteList.push(this.tastingNote.value);
     this.tastingNote.reset();
   }
+
+  removeTastingNote(indexToRemove: number): void {
+    this.tastingNoteList.splice(indexToRemove, 1);
+  }
 }
