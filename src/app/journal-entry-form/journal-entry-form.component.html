@@ -4,24 +4,24 @@
       Coffee
     </mat-panel-title>
     <mat-panel-description>
-      What are you tasting?
+      What are you drinking?
     </mat-panel-description>
   </mat-expansion-panel-header>
 
-  <div class="formFieldsContainer">
+  <div class="formFieldsContainer" [formGroup]="coffeeForm">
     <mat-form-field class="formField">
       <mat-label>Name</mat-label>
-      <input matInput />
+      <input matInput formControlName="name" />
     </mat-form-field>
 
     <mat-form-field class="formField">
       <mat-label>Roaster</mat-label>
-      <input matInput />
+      <input matInput formControlName="roaster" />
     </mat-form-field>
 
     <div class="formField">
       <label class="roastRadioButtonLabel">Roast</label>
-      <mat-radio-group>
+      <mat-radio-group formControlName="roast">
         <mat-radio-button value="light">Light</mat-radio-button>
         <mat-radio-button value="medium">Medium</mat-radio-button>
         <mat-radio-button value="dark">Dark</mat-radio-button>
@@ -31,12 +31,12 @@
     <div class="formField">
       <mat-form-field>
         <mat-label>Tasting Notes</mat-label>
-        <input matInput [formControl]="tastingNote" />
+        <input matInput formControlName="tastingNote" />
       </mat-form-field>
       <button
         mat-icon-button
         (click)="addTastingNote()"
-        [disabled]="!tastingNote.value"
+        [disabled]="!coffeeForm.controls['tastingNote'].value"
       >
         <mat-icon>add</mat-icon>
       </button>

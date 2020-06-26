@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-journal-entry-form',
@@ -7,7 +7,12 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./journal-entry-form.component.css'],
 })
 export class JournalEntryFormComponent implements OnInit {
-  tastingNote: FormControl = new FormControl('');
+  coffeeForm = new FormGroup({
+    name: new FormControl(''),
+    roaster: new FormControl(''),
+    roast: new FormControl(''),
+    tastingNote: new FormControl(''),
+  });
   tastingNoteList: String[];
 
   constructor() {
@@ -17,8 +22,8 @@ export class JournalEntryFormComponent implements OnInit {
   ngOnInit(): void {}
 
   addTastingNote(): void {
-    this.tastingNoteList.push(this.tastingNote.value);
-    this.tastingNote.reset();
+    this.tastingNoteList.push(this.coffeeForm.controls['tastingNote'].value);
+    this.coffeeForm.controls['tastingNote'].reset();
   }
 
   removeTastingNote(indexToRemove: number): void {
