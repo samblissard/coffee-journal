@@ -52,3 +52,40 @@
     </div>
   </div>
 </mat-expansion-panel>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Recipe
+    </mat-panel-title>
+    <mat-panel-description>
+      How did you make it?
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <div class="formFieldsContainer" [formGroup]="recipeForm">
+    <div class="formField">
+      <label class="roastRadioButtonLabel">Method</label>
+      <mat-radio-group formControlName="method">
+        <mat-radio-button value="v60">V60</mat-radio-button>
+        <mat-radio-button value="chemex">Chemex</mat-radio-button>
+        <mat-radio-button value="frenchpress">French Press</mat-radio-button>
+        <mat-radio-button value="coldbrew">Cold Brew</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <mat-form-field class="formField">
+      <mat-label>Coffee Weight</mat-label>
+      <input type="number" matInput formControlName="coffeeWeight" />
+      <span matSuffix>g</span>
+    </mat-form-field>
+    <mat-form-field class="formField">
+      <mat-label>Water Weight</mat-label>
+      <input type="number" matInput formControlName="waterWeight" />
+      <span matSuffix>g</span>
+    </mat-form-field>
+    <span>Ratio: {{ calculateRatio() }}</span>
+    <mat-form-field class="formField">
+      <mat-label>Grind Setting</mat-label>
+      <input type="number" matInput formControlName="grindSetting" />
+    </mat-form-field>
+  </div>
+</mat-expansion-panel>

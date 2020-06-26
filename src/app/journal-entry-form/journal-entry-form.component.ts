@@ -15,6 +15,13 @@ export class JournalEntryFormComponent implements OnInit {
   });
   tastingNoteList: String[];
 
+  recipeForm = new FormGroup({
+    method: new FormControl(''),
+    coffeeWeight: new FormControl(),
+    waterWeight: new FormControl(),
+    grindSetting: new FormControl(),
+  });
+
   constructor() {
     this.tastingNoteList = [];
   }
@@ -28,5 +35,15 @@ export class JournalEntryFormComponent implements OnInit {
 
   removeTastingNote(indexToRemove: number): void {
     this.tastingNoteList.splice(indexToRemove, 1);
+  }
+
+  calculateRatio(): string {
+    const coffeeWeight = this.recipeForm.controls['coffeeWeight'].value;
+    const waterWeight = this.recipeForm.controls['waterWeight'].value;
+    if (coffeeWeight <= 0 || waterWeight <= 0) {
+      return '';
+    }
+
+    return (waterWeight / coffeeWeight).toString();
   }
 }
