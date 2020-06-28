@@ -46,4 +46,6 @@ export class JournalEntryFormComponent implements OnInit {
 
     return (waterWeight / coffeeWeight).toString();
   }
+
+  submitForm(): void {}
 }
