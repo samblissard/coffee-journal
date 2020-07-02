@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { JournalEntryService } from '../services/journal-entry.service';
+import { JournalEntry } from '../models/journal-entry';
 
 @Component({
   selector: 'app-journal-entry-form',
@@ -22,7 +24,7 @@ export class JournalEntryFormComponent implements OnInit {
     grindSetting: new FormControl(),
   });
 
-  constructor() {
+  constructor(private journalEntryService: JournalEntryService) {
     this.tastingNoteList = [];
   }
 
@@ -47,5 +49,12 @@ export class JournalEntryFormComponent implements OnInit {
     return (waterWeight / coffeeWeight).toString();
   }
 
-  submitForm(): void {}
+  async submitForm(): Promise<void> {
+    const journalEntry: JournalEntry = {
+      coffee: { ...this.coffeeForm.value, tastingNotes: this.tastingNoteList },
+    };
+    this.journalEntryService
+      .create(journalEntry)
+      .subscribe((entry) => alert('entry created!'));
+  }
 }
