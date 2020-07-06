@@ -11,17 +11,17 @@
   <div class="formFieldsContainer" [formGroup]="coffeeForm">
     <mat-form-field class="formField">
       <mat-label>Name</mat-label>
-      <input matInput formControlName="name" />
+      <input matInput formControlName="name" required />
     </mat-form-field>
 
     <mat-form-field class="formField">
       <mat-label>Roaster</mat-label>
-      <input matInput formControlName="roaster" />
+      <input matInput formControlName="roaster" required />
     </mat-form-field>
 
     <div class="formField">
       <label class="roastRadioButtonLabel">Roast</label>
-      <mat-radio-group formControlName="roast">
+      <mat-radio-group formControlName="roast" required>
         <mat-radio-button value="light">Light</mat-radio-button>
         <mat-radio-button value="medium">Medium</mat-radio-button>
         <mat-radio-button value="dark">Dark</mat-radio-button>
@@ -94,6 +94,7 @@
   color="primary"
   class="formSection"
   (click)="submitForm()"
+  [disabled]="coffeeForm.invalid"
 >
   Submit
 </button>

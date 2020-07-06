@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { JournalEntryService } from '../services/journal-entry.service';
 import { JournalEntry } from '../models/journal-entry';
 
@@ -10,7 +10,7 @@ import { JournalEntry } from '../models/journal-entry';
 })
 export class JournalEntryFormComponent implements OnInit {
   coffeeForm = new FormGroup({
-    name: new FormControl(''),
+    name: new FormControl('', Validators.required),
     roaster: new FormControl(''),
     roast: new FormControl(''),
     tastingNote: new FormControl(''),
