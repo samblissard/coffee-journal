@@ -2,19 +2,33 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { JournalEntryFormComponent } from './journal-entry-form.component';
 import { JournalEntryService } from '../services/journal-entry.service';
+import { of } from 'rxjs';
+import { Coffee } from '../models/coffee';
 
 describe('JournalEntryFormComponent', () => {
   let component: JournalEntryFormComponent;
   let fixture: ComponentFixture<JournalEntryFormComponent>;
-  let mockService: jasmine.SpyObj<JournalEntryService>;
+  let mockJournalEntryService: jasmine.SpyObj<JournalEntryService>;
 
   beforeEach(async(() => {
+    mockJournalEntryService = jasmine.createSpyObj('JournalEntryService', [
+      'create',
+    ]);
+    let coffee: Coffee = {
+      name: '',
+      roaster: '',
+      roast: '',
+      id: 1,
+      tastingNotes: [],
+    };
+
+    mockJournalEntryService.create.and.returnValue(of({ coffee: coffee }));
     TestBed.configureTestingModule({
       declarations: [JournalEntryFormComponent],
       providers: [
         {
           provide: JournalEntryService,
-          useValue: mockService,
+          useValue: mockJournalEntryService,
         },
       ],
     }).compileComponents();
@@ -91,6 +105,13 @@ describe('JournalEntryFormComponent', () => {
         expect(component.tastingNoteList).toContain('two');
         expect(component.tastingNoteList).toContain('three');
       });
+    });
+  });
+
+  describe('submitForm', () => {
+    it('should call journalEntryService create with form values', () => {
+      component.submitForm();
+      expect(mockJournalEntryService.create).toHaveBeenCalled();
     });
   });
 });
