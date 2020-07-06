@@ -11,8 +11,8 @@ import { JournalEntry } from '../models/journal-entry';
 export class JournalEntryFormComponent implements OnInit {
   coffeeForm = new FormGroup({
     name: new FormControl('', Validators.required),
-    roaster: new FormControl(''),
-    roast: new FormControl(''),
+    roaster: new FormControl('', Validators.required),
+    roast: new FormControl('', Validators.required),
     tastingNote: new FormControl(''),
   });
   tastingNoteList: String[];
