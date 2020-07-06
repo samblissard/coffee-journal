@@ -35,8 +35,12 @@ export class JournalEntryFormComponent implements OnInit {
     this.coffeeForm.controls['tastingNote'].reset();
   }
 
-  removeTastingNote(indexToRemove: number): void {
+  removeTastingNote(indexToRemove: number): boolean {
+    if (indexToRemove < 0 || indexToRemove > this.tastingNoteList.length) {
+      return false;
+    }
     this.tastingNoteList.splice(indexToRemove, 1);
+    return true;
   }
 
   calculateRatio(): string {
