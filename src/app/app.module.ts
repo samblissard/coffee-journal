@@ -19,6 +19,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { HeaderComponent } from './header/header.component';
 import { CoffeeListComponent } from './coffee-list/coffee-list.component';
@@ -56,6 +58,8 @@ import { CoffeeService } from './services/coffee.service';
     MatInputModule,
     MatSliderModule,
     MatRadioModule,
+    MatSelectModule,
+    MatButtonToggleModule,
   ],
   providers: [CoffeeService],
   bootstrap: [AppComponent],

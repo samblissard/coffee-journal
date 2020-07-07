@@ -4,11 +4,13 @@ import { JournalEntryFormComponent } from './journal-entry-form.component';
 import { JournalEntryService } from '../services/journal-entry.service';
 import { of } from 'rxjs';
 import { Coffee } from '../models/coffee';
+import { CoffeeService } from '../services/coffee.service';
 
 describe('JournalEntryFormComponent', () => {
   let component: JournalEntryFormComponent;
   let fixture: ComponentFixture<JournalEntryFormComponent>;
   let mockJournalEntryService: jasmine.SpyObj<JournalEntryService>;
+  let mockCoffeeService: jasmine.SpyObj<CoffeeService>;
 
   beforeEach(async(() => {
     mockJournalEntryService = jasmine.createSpyObj('JournalEntryService', [
@@ -23,12 +25,19 @@ describe('JournalEntryFormComponent', () => {
     };
 
     mockJournalEntryService.create.and.returnValue(of({ coffee: coffee }));
+
+    mockCoffeeService = jasmine.createSpyObj('CoffeeService', ['getAll']);
+    mockCoffeeService.getAll.and.returnValue(of([]));
     TestBed.configureTestingModule({
       declarations: [JournalEntryFormComponent],
       providers: [
         {
           provide: JournalEntryService,
           useValue: mockJournalEntryService,
+        },
+        {
+          provide: CoffeeService,
+          useValue: mockCoffeeService,
         },
       ],
     }).compileComponents();

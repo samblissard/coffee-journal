@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { JournalEntryService } from '../services/journal-entry.service';
 import { JournalEntry } from '../models/journal-entry';
+import { CoffeeService } from '../services/coffee.service';
+import { Coffee } from '../models/coffee';
+import { MatOptionSelectionChange } from '@angular/material/core';
 
 @Component({
   selector: 'app-journal-entry-form',
@@ -9,13 +12,16 @@ import { JournalEntry } from '../models/journal-entry';
   styleUrls: ['./journal-entry-form.component.css'],
 })
 export class JournalEntryFormComponent implements OnInit {
+  coffeeType: string;
   coffeeForm = new FormGroup({
+    id: new FormControl(0),
     name: new FormControl('', Validators.required),
     roaster: new FormControl('', Validators.required),
     roast: new FormControl('', Validators.required),
     tastingNote: new FormControl(''),
   });
   tastingNoteList: String[];
+  coffeeList: Coffee[];
 
   recipeForm = new FormGroup({
     method: new FormControl(''),
@@ -24,11 +30,27 @@ export class JournalEntryFormComponent implements OnInit {
     grindSetting: new FormControl(),
   });
 
-  constructor(private journalEntryService: JournalEntryService) {
+  constructor(
+    private journalEntryService: JournalEntryService,
+    private coffeeService: CoffeeService
+  ) {
     this.tastingNoteList = [];
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.coffeeService
+      .getAll()
+      .subscribe((coffeeList) => (this.coffeeList = coffeeList));
+  }
+
+  onCoffeeListSelect(): void {
+    this.coffeeForm.controls['name'].clearValidators();
+    this.coffeeForm.controls['name'].updateValueAndValidity();
+    this.coffeeForm.controls['roaster'].clearValidators();
+    this.coffeeForm.controls['roaster'].updateValueAndValidity();
+    this.coffeeForm.controls['roast'].clearValidators();
+    this.coffeeForm.controls['roast'].updateValueAndValidity();
+  }
 
   addTastingNote(): void {
     this.tastingNoteList.push(this.coffeeForm.controls['tastingNote'].value);
