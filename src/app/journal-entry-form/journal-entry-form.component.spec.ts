@@ -5,6 +5,8 @@ import { JournalEntryService } from '../services/journal-entry.service';
 import { of } from 'rxjs';
 import { Coffee } from '../models/coffee';
 import { CoffeeService } from '../services/coffee.service';
+import { RouterTestingModule } from '@angular/router/testing';
+import { JournalEntryListComponent } from '../journal-entry-list/journal-entry-list.component';
 
 describe('JournalEntryFormComponent', () => {
   let component: JournalEntryFormComponent;
@@ -30,6 +32,11 @@ describe('JournalEntryFormComponent', () => {
     mockCoffeeService.getAll.and.returnValue(of([]));
     TestBed.configureTestingModule({
       declarations: [JournalEntryFormComponent],
+      imports: [
+        RouterTestingModule.withRoutes([
+          { path: 'entries', component: JournalEntryListComponent },
+        ]),
+      ],
       providers: [
         {
           provide: JournalEntryService,

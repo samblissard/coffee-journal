@@ -4,7 +4,7 @@ import { JournalEntryService } from '../services/journal-entry.service';
 import { JournalEntry } from '../models/journal-entry';
 import { CoffeeService } from '../services/coffee.service';
 import { Coffee } from '../models/coffee';
-import { MatOptionSelectionChange } from '@angular/material/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-journal-entry-form',
@@ -32,7 +32,8 @@ export class JournalEntryFormComponent implements OnInit {
 
   constructor(
     private journalEntryService: JournalEntryService,
-    private coffeeService: CoffeeService
+    private coffeeService: CoffeeService,
+    private router: Router
   ) {
     this.tastingNoteList = [];
   }
@@ -44,12 +45,22 @@ export class JournalEntryFormComponent implements OnInit {
   }
 
   onCoffeeListSelect(): void {
-    this.coffeeForm.controls['name'].clearValidators();
-    this.coffeeForm.controls['name'].updateValueAndValidity();
-    this.coffeeForm.controls['roaster'].clearValidators();
-    this.coffeeForm.controls['roaster'].updateValueAndValidity();
-    this.coffeeForm.controls['roast'].clearValidators();
-    this.coffeeForm.controls['roast'].updateValueAndValidity();
+    const nameControl = this.coffeeForm.controls['name'];
+    nameControl.clearValidators();
+    nameControl.updateValueAndValidity();
+    nameControl.disable();
+
+    const roasterControl = this.coffeeForm.controls['roaster'];
+    roasterControl.clearValidators();
+    roasterControl.updateValueAndValidity();
+    roasterControl.disable();
+
+    const roastControl = this.coffeeForm.controls['roast'];
+    roastControl.clearValidators();
+    roastControl.updateValueAndValidity();
+    roastControl.disable();
+
+    this.coffeeForm.controls['tastingNote'].disable();
   }
 
   addTastingNote(): void {
@@ -81,6 +92,6 @@ export class JournalEntryFormComponent implements OnInit {
     };
     this.journalEntryService
       .create(journalEntry)
-      .subscribe((entry) => alert('entry created!'));
+      .subscribe((entry) => this.router.navigateByUrl('entries'));
   }
 }
