@@ -1,0 +1,22 @@
+.formFieldsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.formSection {
+  margin-top: 2em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 1em;
+}
+
+.roastRadioButtonLabel {
+  display: block;
+}
+
+.formField {
+  margin-bottom: 1em;
+}

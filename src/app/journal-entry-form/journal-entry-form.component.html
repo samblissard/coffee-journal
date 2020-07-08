@@ -1,1 +1,108 @@
-<p>journal-entry-form works!</p>
+<mat-expansion-panel class="formSection">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Coffee
+    </mat-panel-title>
+    <mat-panel-description>
+      What are you drinking?
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <div class="formFieldsContainer" [formGroup]="coffeeForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Select Existing</mat-label>
+      <mat-select formControlName="id" (selectionChange)="onCoffeeListSelect()">
+        <mat-option *ngFor="let coffee of coffeeList" [value]="coffee.id">{{
+          coffee.name
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="formField">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" required />
+    </mat-form-field>
+
+    <mat-form-field class="formField">
+      <mat-label>Roaster</mat-label>
+      <input matInput formControlName="roaster" required />
+    </mat-form-field>
+
+    <div class="formField">
+      <label class="roastRadioButtonLabel">Roast</label>
+      <mat-radio-group formControlName="roast" required>
+        <mat-radio-button value="light">Light</mat-radio-button>
+        <mat-radio-button value="medium">Medium</mat-radio-button>
+        <mat-radio-button value="dark">Dark</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div class="formField">
+      <mat-form-field>
+        <mat-label>Tasting Notes</mat-label>
+        <input matInput formControlName="tastingNote" />
+      </mat-form-field>
+      <button
+        mat-icon-button
+        (click)="addTastingNote()"
+        [disabled]="!coffeeForm.controls['tastingNote'].value"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+      <mat-chip-list>
+        <mat-chip
+          *ngFor="let tastingNote of tastingNoteList; index as i"
+          (removed)="removeTastingNote(i)"
+        >
+          {{ tastingNote }}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+  </div>
+</mat-expansion-panel>
+<mat-expansion-panel class="formSection">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Recipe
+    </mat-panel-title>
+    <mat-panel-description>
+      How did you make it?
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <div class="formFieldsContainer" [formGroup]="recipeForm">
+    <div class="formField">
+      <label class="roastRadioButtonLabel">Method</label>
+      <mat-radio-group formControlName="method">
+        <mat-radio-button value="v60">V60</mat-radio-button>
+        <mat-radio-button value="chemex">Chemex</mat-radio-button>
+        <mat-radio-button value="frenchpress">French Press</mat-radio-button>
+        <mat-radio-button value="coldbrew">Cold Brew</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <mat-form-field class="formField">
+      <mat-label>Coffee Weight</mat-label>
+      <input type="number" matInput formControlName="coffeeWeight" />
+      <span matSuffix>g</span>
+    </mat-form-field>
+    <mat-form-field class="formField">
+      <mat-label>Water Weight</mat-label>
+      <input type="number" matInput formControlName="waterWeight" />
+      <span matSuffix>g</span>
+    </mat-form-field>
+    <span>Ratio: {{ calculateRatio() }}</span>
+    <mat-form-field class="formField">
+      <mat-label>Grind Setting</mat-label>
+      <input type="number" matInput formControlName="grindSetting" />
+    </mat-form-field>
+  </div>
+</mat-expansion-panel>
+<button
+  mat-raised-button
+  color="primary"
+  class="formSection"
+  (click)="submitForm()"
+  [disabled]="coffeeForm.invalid"
+>
+  Submit
+</button>
