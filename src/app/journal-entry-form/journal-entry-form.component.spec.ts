@@ -7,12 +7,14 @@ import { Coffee } from '../models/coffee';
 import { CoffeeService } from '../services/coffee.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { JournalEntryListComponent } from '../journal-entry-list/journal-entry-list.component';
+import { BrewingMethodService } from '../services/brewing-method/brewing-method.service';
 
 describe('JournalEntryFormComponent', () => {
   let component: JournalEntryFormComponent;
   let fixture: ComponentFixture<JournalEntryFormComponent>;
   let mockJournalEntryService: jasmine.SpyObj<JournalEntryService>;
   let mockCoffeeService: jasmine.SpyObj<CoffeeService>;
+  let mockBrewingMethodService: jasmine.SpyObj<BrewingMethodService>;
 
   beforeEach(async(() => {
     mockJournalEntryService = jasmine.createSpyObj('JournalEntryService', [
@@ -30,6 +32,12 @@ describe('JournalEntryFormComponent', () => {
 
     mockCoffeeService = jasmine.createSpyObj('CoffeeService', ['getAll']);
     mockCoffeeService.getAll.and.returnValue(of([]));
+
+    mockBrewingMethodService = jasmine.createSpyObj('BrewingMethodService', [
+      'getAll',
+    ]);
+    mockBrewingMethodService.getAll.and.returnValue(of([]));
+
     TestBed.configureTestingModule({
       declarations: [JournalEntryFormComponent],
       imports: [
@@ -45,6 +53,10 @@ describe('JournalEntryFormComponent', () => {
         {
           provide: CoffeeService,
           useValue: mockCoffeeService,
+        },
+        {
+          provide: BrewingMethodService,
+          useValue: mockBrewingMethodService,
         },
       ],
     }).compileComponents();
