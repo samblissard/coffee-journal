@@ -28,11 +28,11 @@ To run the application on docker:
 
 Build image using dockerfile
 
-'DOCKER_BUILDKIT=1 docker build -t angularcoffee:test .'
+`DOCKER_BUILDKIT=1 docker build -t angularcoffee:test .`
 
 2nd Step:
 
-'docker run -it -p 8081:80 angularcoffee:test'
+`docker run -it -p 8081:80 angularcoffee:test`
 
 website will be available on localhost:8081
 
