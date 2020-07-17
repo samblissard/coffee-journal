@@ -22,6 +22,20 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
+To run the application on docker:
+
+1st Step:
+
+Build image using dockerfile
+
+'DOCKER_BUILDKIT=1 docker build -t angularcoffee:test .'
+
+2nd Step:
+
+'docker run -it -p 8081:80 angularcoffee:test'
+
+website will be available on localhost:8081
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
