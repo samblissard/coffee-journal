@@ -26,7 +26,7 @@ export class JournalEntryFormComponent implements OnInit {
   coffeeList: Coffee[];
 
   recipeForm = new FormGroup({
-    method: new FormControl(''),
+    brewingMethod: new FormControl(''),
     coffeeWeight: new FormControl(),
     waterWeight: new FormControl(),
     grindSetting: new FormControl(),
@@ -92,6 +92,7 @@ export class JournalEntryFormComponent implements OnInit {
   async submitForm(): Promise<void> {
     const journalEntry: JournalEntry = {
       coffee: { ...this.coffeeForm.value, tastingNotes: this.tastingNoteList },
+      ...this.recipeForm.value,
     };
     this.journalEntryService
       .create(journalEntry)
