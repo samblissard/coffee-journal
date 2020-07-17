@@ -26,10 +26,10 @@ export class JournalEntryFormComponent implements OnInit {
   coffeeList: Coffee[];
 
   recipeForm = new FormGroup({
-    brewingMethod: new FormControl(''),
-    coffeeWeight: new FormControl(),
-    waterWeight: new FormControl(),
-    grindSetting: new FormControl(),
+    brewingMethod: new FormControl('', Validators.required),
+    coffeeWeight: new FormControl(null, Validators.required),
+    waterWeight: new FormControl(null, Validators.required),
+    grindSetting: new FormControl(null, Validators.required),
   });
   brewingMethods: BrewingMethod[];
 

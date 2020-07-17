@@ -73,7 +73,7 @@
   <div class="formFieldsContainer" [formGroup]="recipeForm">
     <div class="formField">
       <label class="roastRadioButtonLabel">Brewing Method</label>
-      <mat-radio-group formControlName="brewingMethod">
+      <mat-radio-group formControlName="brewingMethod" required>
         <mat-radio-button
           *ngFor="let method of brewingMethods"
           [value]="method.description"
@@ -83,18 +83,18 @@
     </div>
     <mat-form-field class="formField">
       <mat-label>Coffee Weight</mat-label>
-      <input type="number" matInput formControlName="coffeeWeight" />
+      <input type="number" matInput formControlName="coffeeWeight" required />
       <span matSuffix>g</span>
     </mat-form-field>
     <mat-form-field class="formField">
       <mat-label>Water Weight</mat-label>
-      <input type="number" matInput formControlName="waterWeight" />
+      <input type="number" matInput formControlName="waterWeight" required />
       <span matSuffix>g</span>
     </mat-form-field>
     <span>Ratio: {{ calculateRatio() }}</span>
     <mat-form-field class="formField">
       <mat-label>Grind Setting</mat-label>
-      <input type="number" matInput formControlName="grindSetting" />
+      <input type="number" matInput formControlName="grindSetting" required />
     </mat-form-field>
   </div>
 </mat-expansion-panel>
@@ -103,7 +103,7 @@
   color="primary"
   class="formSection"
   (click)="submitForm()"
-  [disabled]="coffeeForm.invalid"
+  [disabled]="coffeeForm.invalid || recipeForm.invalid"
 >
   Submit
 </button>

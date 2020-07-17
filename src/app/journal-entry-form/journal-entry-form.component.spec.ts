@@ -28,7 +28,15 @@ describe('JournalEntryFormComponent', () => {
       tastingNotes: [],
     };
 
-    mockJournalEntryService.create.and.returnValue(of({ coffee: coffee }));
+    mockJournalEntryService.create.and.returnValue(
+      of({
+        coffee: coffee,
+        brewingMethod: 'something',
+        grindSetting: 1,
+        coffeeWeight: 1,
+        waterWeight: 1,
+      })
+    );
 
     mockCoffeeService = jasmine.createSpyObj('CoffeeService', ['getAll']);
     mockCoffeeService.getAll.and.returnValue(of([]));
