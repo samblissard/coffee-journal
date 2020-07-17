@@ -74,10 +74,11 @@
     <div class="formField">
       <label class="roastRadioButtonLabel">Method</label>
       <mat-radio-group formControlName="method">
-        <mat-radio-button value="v60">V60</mat-radio-button>
-        <mat-radio-button value="chemex">Chemex</mat-radio-button>
-        <mat-radio-button value="frenchpress">French Press</mat-radio-button>
-        <mat-radio-button value="coldbrew">Cold Brew</mat-radio-button>
+        <mat-radio-button
+          *ngFor="let method of brewingMethods"
+          [value]="method.description"
+          >{{ method.description }}</mat-radio-button
+        >
       </mat-radio-group>
     </div>
     <mat-form-field class="formField">

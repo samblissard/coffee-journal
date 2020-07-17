@@ -3,8 +3,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { JournalEntryService } from '../services/journal-entry.service';
 import { JournalEntry } from '../models/journal-entry';
 import { CoffeeService } from '../services/coffee.service';
+import { BrewingMethodService } from '../services/brewing-method/brewing-method.service';
 import { Coffee } from '../models/coffee';
 import { Router } from '@angular/router';
+import { BrewingMethod } from '../models/brewing-method';
 
 @Component({
   selector: 'app-journal-entry-form',
@@ -29,10 +31,12 @@ export class JournalEntryFormComponent implements OnInit {
     waterWeight: new FormControl(),
     grindSetting: new FormControl(),
   });
+  brewingMethods: BrewingMethod[];
 
   constructor(
     private journalEntryService: JournalEntryService,
     private coffeeService: CoffeeService,
+    private brewingMethodService: BrewingMethodService,
     private router: Router
   ) {
     this.tastingNoteList = [];
@@ -42,23 +46,22 @@ export class JournalEntryFormComponent implements OnInit {
     this.coffeeService
       .getAll()
       .subscribe((coffeeList) => (this.coffeeList = coffeeList));
+    this.brewingMethodService
+      .getAll()
+      .subscribe((brewingMethods) => (this.brewingMethods = brewingMethods));
   }
 
   onCoffeeListSelect(): void {
     const nameControl = this.coffeeForm.controls['name'];
-    nameControl.clearValidators();
-    nameControl.updateValueAndValidity();
-    nameControl.disable();
-
     const roasterControl = this.coffeeForm.controls['roaster'];
-    roasterControl.clearValidators();
-    roasterControl.updateValueAndValidity();
-    roasterControl.disable();
-
     const roastControl = this.coffeeForm.controls['roast'];
-    roastControl.clearValidators();
-    roastControl.updateValueAndValidity();
-    roastControl.disable();
+
+    const requiredControls = [nameControl, roasterControl, roastControl];
+    requiredControls.forEach((control) => {
+      control.clearValidators();
+      control.updateValueAndValidity();
+      control.disable();
+    });
 
     this.coffeeForm.controls['tastingNote'].disable();
   }
