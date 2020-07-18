@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { JournalEntryFormComponent } from './journal-entry-form.component';
 import { JournalEntryService } from '../services/journal-entry.service';
 import { of } from 'rxjs';
@@ -8,6 +7,7 @@ import { CoffeeService } from '../services/coffee.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { JournalEntryListComponent } from '../journal-entry-list/journal-entry-list.component';
 import { BrewingMethodService } from '../services/brewing-method/brewing-method.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 describe('JournalEntryFormComponent', () => {
   let component: JournalEntryFormComponent;
@@ -52,6 +52,7 @@ describe('JournalEntryFormComponent', () => {
         RouterTestingModule.withRoutes([
           { path: 'entries', component: JournalEntryListComponent },
         ]),
+        MatSnackBarModule,
       ],
       providers: [
         {
