@@ -14,7 +14,9 @@ import { BrewingMethod } from '../models/brewing-method';
   styleUrls: ['./journal-entry-form.component.css'],
 })
 export class JournalEntryFormComponent implements OnInit {
-  coffeeType: string;
+  coffeeList: Coffee[];
+  brewingMethods: BrewingMethod[];
+
   coffeeForm = new FormGroup({
     id: new FormControl(0),
     name: new FormControl('', Validators.required),
@@ -23,7 +25,6 @@ export class JournalEntryFormComponent implements OnInit {
     tastingNote: new FormControl(''),
   });
   tastingNoteList: String[];
-  coffeeList: Coffee[];
 
   recipeForm = new FormGroup({
     brewingMethod: new FormControl('', Validators.required),
@@ -31,7 +32,6 @@ export class JournalEntryFormComponent implements OnInit {
     waterWeight: new FormControl(null, Validators.required),
     grindSetting: new FormControl(null, Validators.required),
   });
-  brewingMethods: BrewingMethod[];
 
   constructor(
     private journalEntryService: JournalEntryService,
@@ -52,23 +52,18 @@ export class JournalEntryFormComponent implements OnInit {
   }
 
   onCoffeeListSelect(): void {
-    const nameControl = this.coffeeForm.controls['name'];
-    const roasterControl = this.coffeeForm.controls['roaster'];
-    const roastControl = this.coffeeForm.controls['roast'];
-
-    const requiredControls = [nameControl, roasterControl, roastControl];
-    requiredControls.forEach((control) => {
-      control.clearValidators();
-      control.updateValueAndValidity();
-      control.disable();
-    });
-
-    this.coffeeForm.controls['tastingNote'].disable();
+    [this.name, this.roaster, this.roast, this.tastingNote].forEach(
+      (control) => {
+        control.clearValidators();
+        control.updateValueAndValidity();
+        control.disable();
+      }
+    );
   }
 
   addTastingNote(): void {
-    this.tastingNoteList.push(this.coffeeForm.controls['tastingNote'].value);
-    this.coffeeForm.controls['tastingNote'].reset();
+    this.tastingNoteList.push(this.tastingNote.value);
+    this.tastingNote.reset();
   }
 
   removeTastingNote(indexToRemove: number): boolean {
@@ -80,8 +75,8 @@ export class JournalEntryFormComponent implements OnInit {
   }
 
   calculateRatio(): string {
-    const coffeeWeight = this.recipeForm.controls['coffeeWeight'].value;
-    const waterWeight = this.recipeForm.controls['waterWeight'].value;
+    const coffeeWeight = this.coffeeWeight.value;
+    const waterWeight = this.waterWeight.value;
     if (coffeeWeight <= 0 || waterWeight <= 0) {
       return '';
     }
@@ -97,5 +92,32 @@ export class JournalEntryFormComponent implements OnInit {
     this.journalEntryService
       .create(journalEntry)
       .subscribe((entry) => this.router.navigateByUrl('entries'));
+  }
+
+  // Form control accessors
+  get name() {
+    return this.coffeeForm.get('name');
+  }
+  get roaster() {
+    return this.coffeeForm.get('roaster');
+  }
+  get roast() {
+    return this.coffeeForm.get('roast');
+  }
+  get tastingNote() {
+    return this.coffeeForm.get('tastingNote');
+  }
+
+  get brewingMethod() {
+    return this.recipeForm.get('brewingMethod');
+  }
+  get coffeeWeight() {
+    return this.recipeForm.get('coffeeWeight');
+  }
+  get waterWeight() {
+    return this.recipeForm.get('waterWeight');
+  }
+  get grindSetting() {
+    return this.recipeForm.get('grindSetting');
   }
 }
