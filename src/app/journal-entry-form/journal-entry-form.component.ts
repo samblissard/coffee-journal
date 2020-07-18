@@ -7,6 +7,8 @@ import { BrewingMethodService } from '../services/brewing-method/brewing-method.
 import { Coffee } from '../models/coffee';
 import { Router } from '@angular/router';
 import { BrewingMethod } from '../models/brewing-method';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-journal-entry-form',
@@ -37,7 +39,8 @@ export class JournalEntryFormComponent implements OnInit {
     private journalEntryService: JournalEntryService,
     private coffeeService: CoffeeService,
     private brewingMethodService: BrewingMethodService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) {
     this.tastingNoteList = [];
   }
@@ -89,9 +92,11 @@ export class JournalEntryFormComponent implements OnInit {
       coffee: { ...this.coffeeForm.value, tastingNotes: this.tastingNoteList },
       ...this.recipeForm.value,
     };
-    this.journalEntryService
-      .create(journalEntry)
-      .subscribe((entry) => this.router.navigateByUrl('entries'));
+    this.journalEntryService.create(journalEntry).subscribe(
+      (entry) => this.router.navigateByUrl('entries'),
+      (errorResponse: HttpErrorResponse) =>
+        this._snackBar.open(`Error! ${errorResponse.error.message}`, 'Close')
+    );
   }
 
   // Form control accessors
