@@ -8,6 +8,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { JournalEntryListComponent } from '../journal-entry-list/journal-entry-list.component';
 import { BrewingMethodService } from '../services/brewing-method/brewing-method.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 describe('JournalEntryFormComponent', () => {
   let component: JournalEntryFormComponent;
@@ -15,6 +16,7 @@ describe('JournalEntryFormComponent', () => {
   let mockJournalEntryService: jasmine.SpyObj<JournalEntryService>;
   let mockCoffeeService: jasmine.SpyObj<CoffeeService>;
   let mockBrewingMethodService: jasmine.SpyObj<BrewingMethodService>;
+  let router: Router;
 
   beforeEach(async(() => {
     mockJournalEntryService = jasmine.createSpyObj('JournalEntryService', [
@@ -73,6 +75,7 @@ describe('JournalEntryFormComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(JournalEntryFormComponent);
+    router = TestBed.get(Router);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -182,6 +185,12 @@ describe('JournalEntryFormComponent', () => {
     it('should call journalEntryService create with form values', () => {
       component.submitForm();
       expect(mockJournalEntryService.create).toHaveBeenCalled();
+    });
+
+    it('should navigate to the journal entries page on success', () => {
+      const navigateSpy = spyOn(router, 'navigateByUrl');
+      component.submitForm();
+      expect(navigateSpy).toHaveBeenCalledWith('entries');
     });
   });
 });
