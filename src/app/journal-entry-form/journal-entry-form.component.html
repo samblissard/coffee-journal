@@ -28,7 +28,7 @@
     </mat-form-field>
 
     <div class="formField">
-      <label class="roastRadioButtonLabel">Roast</label>
+      <label class="radioButtonLabel">Roast</label>
       <mat-radio-group formControlName="roast" required>
         <mat-radio-button value="light">Light</mat-radio-button>
         <mat-radio-button value="medium">Medium</mat-radio-button>
@@ -72,7 +72,7 @@
 
   <div class="formFieldsContainer" [formGroup]="recipeForm">
     <div class="formField">
-      <label class="roastRadioButtonLabel">Brewing Method</label>
+      <label class="radioButtonLabel">Brewing Method</label>
       <mat-radio-group formControlName="brewingMethod" required>
         <mat-radio-button
           *ngFor="let method of brewingMethods"
