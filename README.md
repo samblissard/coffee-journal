@@ -1,18 +1,34 @@
 # CoffeeJournalClient
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
+## Description
+A web application that lets you log thoughts about coffee and all the fun variables related to it
 
-## Development server
+### Features 
+- Log coffee you've tried :coffee:
+- Log how you made it :man_cook:
+- Rate it and describe it :thought_balloon:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Built With
+- [Angular](https://angular.io/)
+- [Angular Material](https://material.angular.io/)
 
-## Code scaffolding
+## Installation
+### Local Development
+```
+npm install
+ng serve
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The development server will start on `http://localhost:4200/`.
 
-## Build
+### Docker
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```
+docker build -t coffee-journal-client .
+docker run -it -p 8081:80 angularcoffee:test
+```
+
+The local nginx server will be available on localhost:8081
 
 ## Running unit tests
 
@@ -21,21 +37,3 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## To run the application on docker:
-
-1st Step:
-
-Build image using dockerfile
-
-`DOCKER_BUILDKIT=1 docker build -t angularcoffee:test .`
-
-2nd Step:
-
-`docker run -it -p 8081:80 angularcoffee:test`
-
-website will be available on localhost:8081
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
