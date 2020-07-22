@@ -25,7 +25,7 @@ The development server will start on `http://localhost:4200/`.
 
 ```
 docker build -t coffee-journal-client .
-docker run -it -p 8081:80 angularcoffee:test
+docker run -it -p 8081:80 coffee-journal-client
 ```
 
 The local nginx server will be available on localhost:8081
