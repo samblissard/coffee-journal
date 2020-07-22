@@ -1,6 +1,4 @@
 # CoffeeJournalClient
-
-## Description
 A web application that lets you log thoughts about coffee and all the fun variables related to it
 
 ### Features 
