@@ -21,6 +21,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { HeaderComponent } from './header/header.component';
 import { CoffeeListComponent } from './coffee-list/coffee-list.component';
@@ -60,6 +61,7 @@ import { CoffeeService } from './services/coffee.service';
     MatRadioModule,
     MatSelectModule,
     MatButtonToggleModule,
+    MatSnackBarModule,
   ],
   providers: [CoffeeService],
   bootstrap: [AppComponent],

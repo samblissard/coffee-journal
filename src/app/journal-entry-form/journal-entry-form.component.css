@@ -13,8 +13,15 @@
   margin-left: 1em;
 }
 
-.roastRadioButtonLabel {
+.radioButtonLabel {
   display: block;
+  margin-bottom: 1em;
+  font-weight: 300;
+}
+
+.radioButtonLabel:after {
+  content: " *";
+  color: red;
 }
 
 .formField {
