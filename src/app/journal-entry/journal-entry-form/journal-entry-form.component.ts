@@ -35,6 +35,10 @@ export class JournalEntryFormComponent implements OnInit {
     grindSetting: new FormControl(null, Validators.required),
   });
 
+  ratingForm = new FormGroup({
+    rating: new FormControl(3),
+  });
+
   constructor(
     private journalEntryService: JournalEntryService,
     private coffeeService: CoffeeService,
@@ -87,6 +91,14 @@ export class JournalEntryFormComponent implements OnInit {
     return (waterWeight / coffeeWeight).toString();
   }
 
+  setRating(incrementValue: number) {
+    const ratingValue = this.rating.value + incrementValue;
+    if (ratingValue < 1 || ratingValue > 5) {
+      return;
+    }
+    this.rating.setValue(ratingValue);
+  }
+
   async submitForm(): Promise<void> {
     const journalEntry: JournalEntry = {
       coffee: { ...this.coffeeForm.value, tastingNotes: this.tastingNoteList },
@@ -124,5 +136,9 @@ export class JournalEntryFormComponent implements OnInit {
   }
   get grindSetting() {
     return this.recipeForm.get('grindSetting');
+  }
+
+  get rating() {
+    return this.ratingForm.get('rating');
   }
 }

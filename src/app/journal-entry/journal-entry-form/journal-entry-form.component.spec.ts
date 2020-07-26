@@ -193,4 +193,30 @@ describe('JournalEntryFormComponent', () => {
       expect(navigateSpy).toHaveBeenCalledWith('entries');
     });
   });
+
+  describe('setRating', () => {
+    it('should increment the rating given positive value', () => {
+      const initialRatingValue = component.rating.value;
+      component.setRating(1);
+      expect(component.rating.value).toBe(initialRatingValue + 1);
+    });
+
+    it('should decrement the rating given negative value', () => {
+      const initialRatingValue = component.rating.value;
+      component.setRating(-1);
+      expect(component.rating.value).toBe(initialRatingValue - 1);
+    });
+
+    it('should not increment the rating past 5', () => {
+      component.rating.setValue(5);
+      component.setRating(1);
+      expect(component.rating.value).toBe(5);
+    });
+
+    it('should not decrement the rating past 1', () => {
+      component.rating.setValue(1);
+      component.setRating(-1);
+      expect(component.rating.value).toBe(1);
+    });
+  });
 });
