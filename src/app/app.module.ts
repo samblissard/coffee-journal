@@ -8,22 +8,17 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HeaderComponent } from './header/header.component';
-import { CoffeeListComponent } from './coffee-list/coffee-list.component';
 import { JournalEntryListComponent } from './journal-entry-list/journal-entry-list.component';
 import { JournalEntryFormComponent } from './journal-entry-form/journal-entry-form.component';
-import { CoffeeDetailedComponent } from './coffee-detailed/coffee-detailed.component';
-import { CoffeePreviewComponent } from './coffee-preview/coffee-preview.component';
 import { CoffeeService } from './services/coffee.service';
 import { MaterialModule } from './material.module';
+import { CoffeeModule } from './coffee/coffee.module';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    CoffeeListComponent,
     JournalEntryListComponent,
     JournalEntryFormComponent,
-    CoffeeDetailedComponent,
-    CoffeePreviewComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -32,6 +27,7 @@ import { MaterialModule } from './material.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    CoffeeModule,
   ],
   providers: [CoffeeService],
   bootstrap: [AppComponent],

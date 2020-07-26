@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Coffee } from '../models/coffee';
+import { Coffee } from '../../models/coffee';
 
 @Component({
   selector: 'app-coffee-preview[coffee]',
