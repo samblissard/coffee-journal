@@ -1,18 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { JournalEntryListComponent } from './journal-entry-list/journal-entry-list.component';
-import { JournalEntryFormComponent } from './journal-entry-form/journal-entry-form.component';
 
-const routes: Routes = [
-  {
-    path: 'entries',
-    component: JournalEntryListComponent,
-  },
-  {
-    path: 'entries/new',
-    component: JournalEntryFormComponent,
-  },
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

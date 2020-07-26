@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { JournalEntryService } from '../services/journal-entry.service';
-import { JournalEntry } from '../models/journal-entry';
-import { CoffeeService } from '../services/coffee.service';
-import { BrewingMethodService } from '../services/brewing-method/brewing-method.service';
-import { Coffee } from '../models/coffee';
+import { JournalEntryService } from '../../services/journal-entry.service';
+import { JournalEntry } from '../../models/journal-entry';
+import { CoffeeService } from '../../services/coffee.service';
+import { BrewingMethodService } from '../../services/brewing-method/brewing-method.service';
+import { Coffee } from '../../models/coffee';
 import { Router } from '@angular/router';
-import { BrewingMethod } from '../models/brewing-method';
+import { BrewingMethod } from '../../models/brewing-method';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
 
