@@ -14,8 +14,8 @@ describe('CoffeeService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
     });
-    service = TestBed.get(CoffeeService);
-    httpMock = TestBed.get(HttpTestingController);
+    service = TestBed.inject(CoffeeService);
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
   it('should be created', () => {

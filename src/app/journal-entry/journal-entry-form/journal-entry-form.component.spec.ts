@@ -22,7 +22,7 @@ describe('JournalEntryFormComponent', () => {
     mockJournalEntryService = jasmine.createSpyObj('JournalEntryService', [
       'create',
     ]);
-    let coffee: Coffee = {
+    const coffee: Coffee = {
       name: '',
       roaster: '',
       roast: '',
@@ -32,7 +32,7 @@ describe('JournalEntryFormComponent', () => {
 
     mockJournalEntryService.create.and.returnValue(
       of({
-        coffee: coffee,
+        coffee,
         brewingMethod: 'something',
         grindSetting: 1,
         coffeeWeight: 1,
@@ -75,7 +75,7 @@ describe('JournalEntryFormComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(JournalEntryFormComponent);
-    router = TestBed.get(Router);
+    router = TestBed.inject(Router);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -11,7 +11,7 @@ describe('CoffeeListComponent', () => {
   let mockCoffeeService: jasmine.SpyObj<CoffeeService>;
 
   beforeEach(async(() => {
-    let fakeCoffee: Coffee[] = [
+    const fakeCoffee: Coffee[] = [
       {
         id: 1,
         name: 'Good coffee',

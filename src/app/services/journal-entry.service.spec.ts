@@ -15,8 +15,8 @@ describe('JournalEntryService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
     });
-    service = TestBed.get(JournalEntryService);
-    httpMock = TestBed.get(HttpTestingController);
+    service = TestBed.inject(JournalEntryService);
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
   it('should be created', () => {

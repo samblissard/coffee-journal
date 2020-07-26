@@ -26,7 +26,7 @@ export class JournalEntryFormComponent implements OnInit {
     roast: new FormControl('', Validators.required),
     tastingNote: new FormControl(''),
   });
-  tastingNoteList: String[];
+  tastingNoteList: string[];
 
   recipeForm = new FormGroup({
     brewingMethod: new FormControl('', Validators.required),
@@ -40,7 +40,7 @@ export class JournalEntryFormComponent implements OnInit {
     private coffeeService: CoffeeService,
     private brewingMethodService: BrewingMethodService,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private snackBar: MatSnackBar
   ) {
     this.tastingNoteList = [];
   }
@@ -95,7 +95,7 @@ export class JournalEntryFormComponent implements OnInit {
     this.journalEntryService.create(journalEntry).subscribe(
       () => this.router.navigateByUrl('entries'),
       (errorResponse: HttpErrorResponse) =>
-        this._snackBar.open(`Error! ${errorResponse.error.message}`, 'Close')
+        this.snackBar.open(`Error! ${errorResponse.error.message}`, 'Close')
     );
   }
 
