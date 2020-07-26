@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { JournalEntryService } from '../services/journal-entry.service';
-import { JournalEntry } from '../models/journal-entry';
-import { CoffeeService } from '../services/coffee.service';
-import { BrewingMethodService } from '../services/brewing-method/brewing-method.service';
-import { Coffee } from '../models/coffee';
+import { JournalEntryService } from '../../services/journal-entry.service';
+import { JournalEntry } from '../../models/journal-entry';
+import { CoffeeService } from '../../services/coffee.service';
+import { BrewingMethodService } from '../../services/brewing-method/brewing-method.service';
+import { Coffee } from '../../models/coffee';
 import { Router } from '@angular/router';
-import { BrewingMethod } from '../models/brewing-method';
+import { BrewingMethod } from '../../models/brewing-method';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -26,7 +26,7 @@ export class JournalEntryFormComponent implements OnInit {
     roast: new FormControl('', Validators.required),
     tastingNote: new FormControl(''),
   });
-  tastingNoteList: String[];
+  tastingNoteList: string[];
 
   recipeForm = new FormGroup({
     brewingMethod: new FormControl('', Validators.required),
@@ -40,7 +40,7 @@ export class JournalEntryFormComponent implements OnInit {
     private coffeeService: CoffeeService,
     private brewingMethodService: BrewingMethodService,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private snackBar: MatSnackBar
   ) {
     this.tastingNoteList = [];
   }
@@ -95,7 +95,7 @@ export class JournalEntryFormComponent implements OnInit {
     this.journalEntryService.create(journalEntry).subscribe(
       () => this.router.navigateByUrl('entries'),
       (errorResponse: HttpErrorResponse) =>
-        this._snackBar.open(`Error! ${errorResponse.error.message}`, 'Close')
+        this.snackBar.open(`Error! ${errorResponse.error.message}`, 'Close')
     );
   }
 

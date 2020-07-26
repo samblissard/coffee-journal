@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Coffee } from '../models/coffee';
-import { CoffeeService } from '../services/coffee.service';
+import { Coffee } from '../../models/coffee';
+import { CoffeeService } from '../../services/coffee.service';
 
 @Component({
   selector: 'app-coffee-list',

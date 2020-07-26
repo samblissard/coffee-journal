@@ -1,10 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CoffeeListComponent } from './coffee-list.component';
-import { CoffeeService } from '../services/coffee.service';
-import { Observable, of } from 'rxjs';
-import { Coffee } from '../models/coffee';
-import { Component } from '@angular/core';
+import { CoffeeService } from '../../services/coffee.service';
+import { of } from 'rxjs';
+import { Coffee } from '../../models/coffee';
 
 describe('CoffeeListComponent', () => {
   let component: CoffeeListComponent;
@@ -12,7 +11,7 @@ describe('CoffeeListComponent', () => {
   let mockCoffeeService: jasmine.SpyObj<CoffeeService>;
 
   beforeEach(async(() => {
-    let fakeCoffee: Coffee[] = [
+    const fakeCoffee: Coffee[] = [
       {
         id: 1,
         name: 'Good coffee',

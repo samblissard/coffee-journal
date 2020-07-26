@@ -16,7 +16,7 @@ describe('BrewingMethodService', () => {
       imports: [HttpClientTestingModule],
     });
     service = TestBed.inject(BrewingMethodService);
-    httpMock = TestBed.get(HttpTestingController);
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
   it('should be created', () => {

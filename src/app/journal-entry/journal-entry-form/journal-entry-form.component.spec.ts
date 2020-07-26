@@ -1,12 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { JournalEntryFormComponent } from './journal-entry-form.component';
-import { JournalEntryService } from '../services/journal-entry.service';
+import { JournalEntryService } from '../../services/journal-entry.service';
 import { of } from 'rxjs';
-import { Coffee } from '../models/coffee';
-import { CoffeeService } from '../services/coffee.service';
+import { Coffee } from '../../models/coffee';
+import { CoffeeService } from '../../services/coffee.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { JournalEntryListComponent } from '../journal-entry-list/journal-entry-list.component';
-import { BrewingMethodService } from '../services/brewing-method/brewing-method.service';
+import { BrewingMethodService } from '../../services/brewing-method/brewing-method.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
@@ -22,7 +22,7 @@ describe('JournalEntryFormComponent', () => {
     mockJournalEntryService = jasmine.createSpyObj('JournalEntryService', [
       'create',
     ]);
-    let coffee: Coffee = {
+    const coffee: Coffee = {
       name: '',
       roaster: '',
       roast: '',
@@ -32,7 +32,7 @@ describe('JournalEntryFormComponent', () => {
 
     mockJournalEntryService.create.and.returnValue(
       of({
-        coffee: coffee,
+        coffee,
         brewingMethod: 'something',
         grindSetting: 1,
         coffeeWeight: 1,
@@ -75,7 +75,7 @@ describe('JournalEntryFormComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(JournalEntryFormComponent);
-    router = TestBed.get(Router);
+    router = TestBed.inject(Router);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
