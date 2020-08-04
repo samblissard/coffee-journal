@@ -110,10 +110,10 @@
   <div class="formFieldsContainer" [formGroup]="ratingForm">
     <label>Rating</label>
     <div>
-      <button mat-icon-button (click)="this.setRating(-1)">
+      <button mat-icon-button (click)="this.incrementRating(-1)">
         <mat-icon>remove</mat-icon>
       </button>
-      <button mat-icon-button (click)="this.setRating(1)">
+      <button mat-icon-button (click)="this.incrementRating(1)">
         <mat-icon>add</mat-icon></button
       ><span>{{ rating.value }}</span>
     </div>
