@@ -37,6 +37,8 @@ describe('JournalEntryFormComponent', () => {
         grindSetting: 1,
         coffeeWeight: 1,
         waterWeight: 1,
+        rating: 3,
+        personalTastingNotes: 'good',
       })
     );
 

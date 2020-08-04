@@ -107,7 +107,7 @@ export class JournalEntryFormComponent implements OnInit {
       ...this.ratingForm.value,
     };
     this.journalEntryService.create(journalEntry).subscribe(
-      (entry) => this.router.navigateByUrl('entries'),
+      () => this.router.navigateByUrl('entries'),
       (errorResponse: HttpErrorResponse) =>
         this.snackBar.open(`Error! ${errorResponse.error.message}`, 'Close')
     );
