@@ -92,7 +92,7 @@ export class JournalEntryFormComponent implements OnInit {
     return (waterWeight / coffeeWeight).toString();
   }
 
-  setRating(incrementValue: number) {
+  incrementRating(incrementValue: number) {
     const ratingValue = this.rating.value + incrementValue;
     if (ratingValue < 1 || ratingValue > 5) {
       return;
