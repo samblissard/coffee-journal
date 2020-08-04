@@ -108,15 +108,23 @@
     </mat-panel-description>
   </mat-expansion-panel-header>
   <div class="formFieldsContainer" [formGroup]="ratingForm">
+    <label>Rating</label>
     <div>
-      <span>{{ rating.value }}</span>
       <button mat-icon-button (click)="this.setRating(-1)">
         <mat-icon>remove</mat-icon>
       </button>
       <button mat-icon-button (click)="this.setRating(1)">
-        <mat-icon>add</mat-icon>
-      </button>
+        <mat-icon>add</mat-icon></button
+      ><span>{{ rating.value }}</span>
     </div>
+    <mat-form-field>
+      <mat-label>Personal Tasting Notes</mat-label>
+      <textarea
+        matInput
+        placeholder="Notes about flavors, strength, etc."
+        formControlName="personalTastingNotes"
+      ></textarea>
+    </mat-form-field>
   </div>
 </mat-expansion-panel>
 <button

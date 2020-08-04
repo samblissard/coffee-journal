@@ -37,6 +37,7 @@ export class JournalEntryFormComponent implements OnInit {
 
   ratingForm = new FormGroup({
     rating: new FormControl(3),
+    personalTastingNotes: new FormControl(''),
   });
 
   constructor(
@@ -103,9 +104,10 @@ export class JournalEntryFormComponent implements OnInit {
     const journalEntry: JournalEntry = {
       coffee: { ...this.coffeeForm.value, tastingNotes: this.tastingNoteList },
       ...this.recipeForm.value,
+      ...this.ratingForm.value,
     };
     this.journalEntryService.create(journalEntry).subscribe(
-      () => this.router.navigateByUrl('entries'),
+      (entry) => this.router.navigateByUrl('entries'),
       (errorResponse: HttpErrorResponse) =>
         this.snackBar.open(`Error! ${errorResponse.error.message}`, 'Close')
     );
