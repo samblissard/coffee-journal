@@ -37,6 +37,8 @@ describe('JournalEntryFormComponent', () => {
         grindSetting: 1,
         coffeeWeight: 1,
         waterWeight: 1,
+        rating: 3,
+        personalTastingNotes: 'good',
       })
     );
 
@@ -191,6 +193,32 @@ describe('JournalEntryFormComponent', () => {
       const navigateSpy = spyOn(router, 'navigateByUrl');
       component.submitForm();
       expect(navigateSpy).toHaveBeenCalledWith('entries');
+    });
+  });
+
+  describe('incrementRating', () => {
+    it('should increment the rating given positive value', () => {
+      const initialRatingValue = component.rating.value;
+      component.incrementRating(1);
+      expect(component.rating.value).toBe(initialRatingValue + 1);
+    });
+
+    it('should decrement the rating given negative value', () => {
+      const initialRatingValue = component.rating.value;
+      component.incrementRating(-1);
+      expect(component.rating.value).toBe(initialRatingValue - 1);
+    });
+
+    it('should not increment the rating past 5', () => {
+      component.rating.setValue(5);
+      component.incrementRating(1);
+      expect(component.rating.value).toBe(5);
+    });
+
+    it('should not decrement the rating past 1', () => {
+      component.rating.setValue(1);
+      component.incrementRating(-1);
+      expect(component.rating.value).toBe(1);
     });
   });
 });

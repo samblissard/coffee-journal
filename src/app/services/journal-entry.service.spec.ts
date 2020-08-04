@@ -37,6 +37,8 @@ describe('JournalEntryService', () => {
         coffeeWeight: 1,
         waterWeight: 1,
         grindSetting: 1,
+        rating: 3,
+        personalTastingNotes: 'good',
       };
 
       service.create(journalEntry).subscribe();

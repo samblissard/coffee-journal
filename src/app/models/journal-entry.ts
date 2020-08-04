@@ -6,4 +6,6 @@ export interface JournalEntry {
   coffeeWeight: number;
   waterWeight: number;
   grindSetting: number;
+  rating: number;
+  personalTastingNotes: string;
 }
